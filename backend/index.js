@@ -9,6 +9,7 @@ if (!port) {
 
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 // routes
 import authRouter from './routes/auth.Route.js';
@@ -18,6 +19,7 @@ import connectDB from './config/db.js';
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cookieParser());
 
 // path
 app.get('/', (req, res) => {
