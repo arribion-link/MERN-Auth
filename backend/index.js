@@ -12,6 +12,7 @@ import bodyParser from 'body-parser';
 
 // routes
 import authRouter from './routes/auth.Route.js';
+import connectDB from './config/db.js';
 
 // middleware
 app.use(express.json());
@@ -26,6 +27,11 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRouter);
 
 
-app.listen(port, () => {
-    console.log(`http://loacalhost:${port}`);
-})
+const initApp = async () => {
+    await connectDB()
+    app.listen(port, () => {
+        console.log(`http://loacalhost:${port}`);
+    });
+}
+
+initApp()
